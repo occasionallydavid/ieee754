@@ -1,5 +1,5 @@
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
-exports.read = function (buffer, offset, isLE, mLen, nBytes) {
+exports.unpack = function (buffer, offset, isLE, mLen, nBytes) {
   let e, m
   const eLen = (nBytes * 8) - mLen - 1
   const eMax = (1 << eLen) - 1
@@ -40,7 +40,7 @@ exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   return (s ? -1 : 1) * m * Math.pow(2, e - mLen)
 }
 
-exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
+exports.pack = function (buffer, value, offset, isLE, mLen, nBytes) {
   let e, m, c
   let eLen = (nBytes * 8) - mLen - 1
   const eMax = (1 << eLen) - 1
